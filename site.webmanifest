@@ -1,0 +1,9 @@
+{
+  "name": "AgentsBoard Demo",
+  "short_name": "AgentsBoard",
+  "description": "Agent-native home-screen intelligence concept demo",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#05060a",
+  "theme_color": "#7c7bff"
+}
