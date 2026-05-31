@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="SpeakPaste — an AI-first iOS keyboard without a keyboard." />
+  <meta property="og:title" content="SpeakPaste — the keyboard without a keyboard" />
+  <meta property="og:description" content="An open-source iOS/iPadOS reference implementation for speech-first AI input inside any text field." />
+  <meta property="og:image" content="https://wedi-dev.github.io/agents-board-demo/assets/speakpaste/speakpaste-keyboard-form-7520258f.jpg" />
+  <title>SpeakPaste — the keyboard without a keyboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#05060a;--text:#f7f8ff;--muted:#9aa3b7;--soft:#d9def0;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.05);--violet:#7c7bff;--blue:#6ea8ff;--green:#34d399;--amber:#fbbf24;--red:#fb7185;--shadow:0 30px 100px rgba(0,0,0,.55)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 12% 2%,rgba(110,168,255,.22),transparent 33%),radial-gradient(circle at 85% 10%,rgba(124,123,255,.26),transparent 35%),radial-gradient(circle at 50% 100%,rgba(52,211,153,.11),transparent 34%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-feature-settings:"cv01","ss03";overflow-x:hidden}a{color:inherit;text-decoration:none}.noise{position:fixed;inset:0;pointer-events:none;opacity:.11;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}.shell{max-width:1160px;margin:0 auto;padding:0 24px}.nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(18px);background:linear-gradient(to bottom,rgba(5,6,10,.88),rgba(5,6,10,.56));border-bottom:1px solid var(--line2)}.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;font-weight:850;letter-spacing:-.04em}.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--violet));box-shadow:0 0 50px rgba(110,168,255,.45)}.navlinks{display:flex;gap:16px;align-items:center;color:var(--muted);font-size:14px;font-weight:700}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 18px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);color:var(--text);font-weight:800}.btn.primary{background:linear-gradient(135deg,#4f8cff,#8b5cf6);border:0;box-shadow:0 14px 50px rgba(79,140,255,.28)}
+    .hero{padding:86px 0 64px}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center}.eyebrow{display:inline-flex;gap:9px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:9px 14px;background:rgba(255,255,255,.04);color:var(--soft);font:700 12px/1 JetBrains Mono,monospace;text-transform:uppercase;letter-spacing:.09em}.hero h1{font-size:clamp(48px,7.7vw,102px);line-height:.9;letter-spacing:-.085em;margin:25px 0 22px;font-weight:900}.grad{background:linear-gradient(120deg,#fff,#c8d7ff 42%,#a5f3d4 82%);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{color:var(--muted);font-size:clamp(19px,2vw,24px);line-height:1.48;font-weight:500;max-width:690px}.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}.proof div{border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.04);padding:16px}.proof strong{display:block;font-size:22px;letter-spacing:-.04em}.proof span{display:block;color:var(--muted);font-size:13px;margin-top:6px}.phone-card{position:relative;max-width:390px;margin:0 auto;border:1px solid var(--line);border-radius:38px;background:linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.035));padding:12px;box-shadow:var(--shadow)}.phone-card:before{content:"";position:absolute;inset:-1px;border-radius:38px;background:radial-gradient(circle at 50% 0,rgba(110,168,255,.28),transparent 45%);pointer-events:none}.phone-card img{position:relative;width:100%;display:block;border-radius:28px}.caption{position:relative;display:flex;justify-content:space-between;gap:12px;color:var(--muted);font:700 12px/1.35 JetBrains Mono,monospace;text-transform:uppercase;letter-spacing:.05em;margin-top:12px}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    section{padding:76px 0}.section-head{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-bottom:28px}.section-head h2{font-size:clamp(34px,5vw,62px);letter-spacing:-.07em;line-height:.96;margin:0;max-width:720px}.section-head p{max-width:450px;margin:0;color:var(--muted);font-size:18px;line-height:1.55}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.025));padding:24px;min-height:225px;box-shadow:0 18px 60px rgba(0,0,0,.24)}.k{font:700 12px/1 JetBrains Mono,monospace;color:#b9c8ff;text-transform:uppercase;letter-spacing:.11em}.card h3{font-size:27px;line-height:1.02;letter-spacing:-.05em;margin:18px 0 10px}.card p,.card li{color:var(--muted);font-size:16px;line-height:1.55}.card ul{padding-left:19px;margin:12px 0 0}.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.035);padding:22px}.num{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;background:rgba(110,168,255,.18);color:#dbe8ff;font:800 13px JetBrains Mono,monospace}.step h3{font-size:20px;margin:18px 0 8px;letter-spacing:-.03em}.step p{color:var(--muted);line-height:1.5;margin:0}.answers{display:grid;gap:14px}.answer{border:1px solid var(--line);border-radius:26px;background:rgba(255,255,255,.04);padding:22px}.answer h3{display:flex;justify-content:space-between;gap:12px;margin:0 0 12px;font-size:20px;letter-spacing:-.03em}.answer h3 span{font:700 12px JetBrains Mono,monospace;color:var(--green)}.answer p{margin:0;color:#d9def0;font-size:17px;line-height:1.55}.quote{border:1px solid var(--line);border-radius:38px;background:linear-gradient(135deg,rgba(110,168,255,.18),rgba(124,123,255,.16),rgba(52,211,153,.06));padding:46px;text-align:center}.quote p{font-size:clamp(28px,4.8vw,58px);line-height:.98;letter-spacing:-.065em;font-weight:900;margin:0}.quote small{display:block;color:var(--muted);margin-top:22px;font-size:17px}.footer{padding:52px 0 72px;color:var(--muted);border-top:1px solid var(--line2)}.footer-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.mono{font-family:JetBrains Mono,monospace}
+    @media(max-width:900px){.hero-grid,.cards,.flow{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:14px}.navlinks a:not(.btn){display:none}.hero{text-align:center}.lead{margin:0 auto}.cta{justify-content:center}.proof{max-width:560px;margin:28px auto 0}.caption{display:block}.caption span{display:block;margin-bottom:6px}}
+    @media(max-width:560px){.proof{grid-template-columns:1fr}.phone-card{max-width:330px}.hero{padding-top:58px}.card{min-height:auto}}
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <nav class="nav"><div class="shell nav-inner"><a class="brand" href="speakpaste.html"><span class="logo"></span><span>SpeakPaste</span></a><div class="navlinks"><a href="index.html">AgentsBoard</a><a href="#why">Why</a><a href="#architecture">Architecture</a><a href="#form">Form copy</a><a class="btn" href="https://github.com/wedi-dev/agents-board-demo">GitHub</a></div></div></nav>
+  <main>
+    <section class="hero shell">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">ios/ipados · speech-first input · oss pitch</div>
+          <h1>The keyboard <span class="grad">without a keyboard.</span></h1>
+          <p class="lead">SpeakPaste turns any text field into an AI command surface: dictate, clean up, rewrite, voice-edit, paste snippets, and run text combos without relying on a full QWERTY keyboard.</p>
+          <div class="cta"><a class="btn primary" href="#form">Use the form answers</a><a class="btn" href="#architecture">See the hard part</a></div>
+          <div class="proof"><div><strong>iOS</strong><span>custom keyboard constraints</span></div><div><strong>Voice</strong><span>speech-first writing flow</span></div><div><strong>OSS</strong><span>reference implementation</span></div></div>
+        </div>
+        <div class="phone-card"><img src="assets/speakpaste/speakpaste-keyboard-form-7520258f.jpg" alt="SpeakPaste keyboard visible while filling the OpenAI Codex for OSS form"><div class="caption"><span>real iPhone form flow</span><span>voice keyboard inserts into any app</span></div></div>
+      </div>
+    </section>
+
+    <section id="why" class="shell">
+      <div class="section-head"><h2>Mobile text input is still optimized for typing, not thought.</h2><p>Standard dictation transcribes. SpeakPaste turns speech into usable output: cleaned text, edits, snippets, command combos, and recoverable history inside the current app.</p></div>
+      <div class="cards">
+        <div class="card"><div class="k">problem</div><h3>The bottleneck is intent capture.</h3><p>On iPhone, the hard part is getting your idea into the active text field quickly without opening another chat app or breaking flow.</p></div>
+        <div class="card"><div class="k">product</div><h3>A command layer, not QWERTY.</h3><p>One central microphone, AI cleanup, voice edits, snippets, combos, and fallback history — all from a minimal keyboard.</p></div>
+        <div class="card"><div class="k">open source value</div><h3>Reference code for hard edges.</h3><p>The project documents real iOS extension constraints, speech/LLM workflows, extension IPC, privacy boundaries, and recovery paths.</p></div>
+      </div>
+    </section>
+
+    <section id="architecture" class="shell">
+      <div class="section-head"><h2>The hard part is not the prompt. It is the iOS extension architecture.</h2><p>Keyboard extensions cannot access the microphone directly, so the app and extension coordinate through a careful cross-process flow.</p></div>
+      <div class="flow">
+        <div class="step"><div class="num">01</div><h3>Request</h3><p>The keyboard asks the container app to record audio through App Group state and Darwin notifications.</p></div>
+        <div class="step"><div class="num">02</div><h3>Record</h3><p>The app records with background audio permissions and writes recoverable state.</p></div>
+        <div class="step"><div class="num">03</div><h3>Transform</h3><p>Speech is transcribed, optionally cleaned with an LLM, and prepared for insertion.</p></div>
+        <div class="step"><div class="num">04</div><h3>Recover</h3><p>If insertion fails or iOS kills the extension, content falls back to clipboard/history.</p></div>
+      </div>
+    </section>
+
+    <section class="shell">
+      <div class="section-head"><h2>Why Codex fits.</h2><p>SpeakPaste is small enough to understand, but complex enough to benefit from serious maintainer automation.</p></div>
+      <div class="cards">
+        <div class="card"><div class="k">maintenance</div><h3>Refactor fragile flows safely.</h3><ul><li>keyboard state machine</li><li>extension/app IPC</li><li>fallback behavior</li><li>release workflows</li></ul></div>
+        <div class="card"><div class="k">quality</div><h3>Tests where regressions hurt.</h3><ul><li>prompt regression suite</li><li>speech/LLM edge fixtures</li><li>provider adapters</li><li>keyboard flow checks</li></ul></div>
+        <div class="card"><div class="k">security</div><h3>Privacy-first mobile AI.</h3><ul><li>provider abstraction</li><li>logging boundaries</li><li>secret handling</li><li>safe defaults for contributors</li></ul></div>
+      </div>
+    </section>
+
+    <section id="form" class="shell">
+      <div class="section-head"><h2>Short form answers.</h2><p>Concise copy for the Codex for Open Source application.</p></div>
+      <div class="answers">
+        <div class="answer"><h3>Why does this repository qualify? <span>333 chars</span></h3><p>SpeakPaste is an open-source iOS/iPadOS reference implementation for an AI-first “keyboard without a keyboard”: speech input, LLM cleanup, voice editing, snippets, combos, and resilient extension/app IPC. It addresses a poorly documented ecosystem gap: building production-grade AI workflows inside Apple custom keyboard constraints.</p></div>
+        <div class="answer"><h3>How will you use API credits? <span>303 chars</span></h3><p>I will use API credits to add OpenAI provider support, run prompt regression tests, generate speech/LLM edge-case fixtures, and improve maintainer automation: Codex-assisted PR review, refactoring, documentation, security checks, and release workflows around the fragile keyboard-extension architecture.</p></div>
+        <div class="answer"><h3>Anything else we should know? <span>384 chars</span></h3><p>I am a managing partner at websensa.com and use coding agents in real work, especially Claude Code. I bought Codex for travel and want to evaluate it seriously for OSS maintenance. SpeakPaste is practical mobile AI infrastructure: a minimal command keyboard, not another chat UI. The hardest work is reliability, privacy, extension IPC, fallback behavior, and maintainable docs/tests.</p></div>
+      </div>
+    </section>
+
+    <section class="shell"><div class="quote"><p>SpeakPaste is a practical experiment in replacing the mobile keyboard with an AI command surface.</p><small>Real iOS extension constraints. Real speech/LLM workflows. Real OSS maintainer work.</small></div></section>
+  </main>
+  <footer class="footer"><div class="shell footer-inner"><div><strong>SpeakPaste</strong><br><span>speech-first AI input for iOS/iPadOS</span></div><div class="mono">wedi-dev / Codex OSS pitch</div></div></footer>
+</body>
+</html>
