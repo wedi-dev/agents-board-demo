@@ -6,7 +6,7 @@ AgentsBoard turns AI agents into an always-on, glanceable surface: widgets that 
 
 <p align="center">
   <a href="https://wedi-dev.github.io/agents-board-demo/">
-    <img src="assets/showcase/contact-sheet.png" alt="AgentsBoard widget showcase" width="920">
+    <img src="assets/showcase-en-v2/contact-sheet.png?v=2" alt="AgentsBoard widget showcase" width="920">
   </a>
 </p>
 
