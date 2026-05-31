@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="AgentsBoard — agent-native home-screen intelligence. A concept demo for glanceable AI-operated widgets." />
+  <meta name="description" content="AgentsBoard — AI agents publish the one widget you need to see next." />
   <meta property="og:title" content="AgentsBoard — agent-native home-screen intelligence" />
-  <meta property="og:description" content="AI agents that publish glanceable, validated widgets to your phone-sized command board." />
+  <meta property="og:description" content="A phone-sized command surface where AI agents turn tool state into one clear next action." />
   <meta property="og:image" content="https://wedi-dev.github.io/agents-board-demo/assets/hero/agentsboard-hero-7751ce57.jpg" />
   <link rel="manifest" href="site.webmanifest" />
   <title>AgentsBoard — agent-native home-screen intelligence</title>
@@ -13,70 +13,97 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#05060a; --panel:#0b0d12; --panel2:#11131c; --text:#f7f8ff; --muted:#98a0b4;
-      --soft:#cdd2e3; --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.05);
-      --violet:#7c7bff; --violet2:#b9a7ff; --green:#34d399; --red:#fb7185; --amber:#fbbf24;
-      --radius:28px; --shadow:0 30px 100px rgba(0,0,0,.55);
-    }
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:radial-gradient(circle at 50% -10%,rgba(124,123,255,.28),transparent 36%),radial-gradient(circle at 92% 12%,rgba(52,211,153,.16),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-feature-settings:"cv01","ss03";overflow-x:hidden}
-    a{color:inherit;text-decoration:none}.noise{position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}
-    .shell{max-width:1180px;margin:0 auto;padding:0 24px}.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:linear-gradient(to bottom,rgba(5,6,10,.86),rgba(5,6,10,.55));border-bottom:1px solid var(--line2)}.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.04em}.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--violet),var(--green));box-shadow:0 0 50px rgba(124,123,255,.55)}.navlinks{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px;font-weight:650}.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);color:var(--text);font-weight:750}.btn.primary{background:linear-gradient(135deg,#6366f1,#8b5cf6);border:0;box-shadow:0 12px 50px rgba(99,102,241,.35)}
-    .hero{padding:92px 0 58px;text-align:center;position:relative}.eyebrow{display:inline-flex;gap:9px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:9px 14px;background:rgba(255,255,255,.04);color:var(--soft);font:700 13px/1 JetBrains Mono,monospace;text-transform:uppercase;letter-spacing:.08em}.hero h1{font-size:clamp(52px,8.5vw,112px);line-height:.88;letter-spacing:-.085em;margin:28px auto 22px;max-width:1050px;font-weight:900}.grad{background:linear-gradient(120deg,#fff,#c9ccff 40%,#93f5d2 78%);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{max-width:760px;margin:0 auto;color:var(--muted);font-size:clamp(19px,2.2vw,25px);line-height:1.45;font-weight:500}.cta{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:34px}.hero-grid{margin-top:64px;display:grid;grid-template-columns:1fr;gap:18px}.showcase-frame{position:relative;border:1px solid var(--line);border-radius:34px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025));padding:16px;box-shadow:var(--shadow);overflow:hidden}.showcase-frame:before{content:"";position:absolute;inset:-1px;background:radial-gradient(circle at 50% 0,rgba(124,123,255,.26),transparent 45%);pointer-events:none}.showcase-frame img{position:relative;width:100%;display:block;border-radius:22px}.showcase-frame.hero-image{max-width:680px;margin:0 auto;padding:10px;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.035))}.showcase-frame.hero-image img{background:#02040a}.caption{display:flex;justify-content:space-between;gap:20px;color:var(--muted);font:600 13px/1.3 JetBrains Mono,monospace;margin-top:12px;text-transform:uppercase;letter-spacing:.04em}
-    section{padding:82px 0}.section-head{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-bottom:28px}.section-head h2{font-size:clamp(34px,5vw,64px);letter-spacing:-.07em;line-height:.95;margin:0;max-width:720px}.section-head p{max-width:430px;margin:0;color:var(--muted);font-size:18px;line-height:1.5}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.025));padding:24px;min-height:220px;box-shadow:0 18px 60px rgba(0,0,0,.24)}.k{font:700 12px/1 JetBrains Mono,monospace;color:var(--violet2);text-transform:uppercase;letter-spacing:.11em}.card h3{font-size:26px;line-height:1.02;letter-spacing:-.045em;margin:18px 0 10px}.card p{color:var(--muted);font-size:16px;line-height:1.55;margin:0}.metric{font-size:70px;line-height:.9;font-weight:900;letter-spacing:-.08em;margin-top:24px}.green{color:var(--green)}.violet{color:var(--violet2)}.red{color:var(--red)}
-    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{position:relative;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.035);padding:22px}.num{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;background:rgba(124,123,255,.18);color:#d8d6ff;font:800 13px JetBrains Mono,monospace}.step h3{font-size:20px;margin:18px 0 8px;letter-spacing:-.03em}.step p{color:var(--muted);line-height:1.5;margin:0}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.shot{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#f5f2e8}.shot img{width:100%;display:block}.shot span{display:block;padding:12px 14px;background:rgba(255,255,255,.04);color:var(--muted);font:700 12px JetBrains Mono,monospace;text-transform:uppercase;letter-spacing:.08em}.quote{border:1px solid var(--line);border-radius:38px;background:linear-gradient(135deg,rgba(124,123,255,.18),rgba(52,211,153,.08));padding:46px;text-align:center}.quote p{font-size:clamp(28px,4.8vw,58px);line-height:.98;letter-spacing:-.065em;font-weight:900;margin:0}.quote small{display:block;color:var(--muted);margin-top:22px;font-size:17px}.footer{padding:54px 0 76px;color:var(--muted);border-top:1px solid var(--line2)}.footer-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.mono{font-family:JetBrains Mono,monospace}
-    @media(max-width:860px){.navlinks a:not(.btn){display:none}.cards,.flow,.gallery{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:14px}.hero{padding-top:64px}.caption{display:block}.caption span{display:block;margin-bottom:6px}}
+    :root{--bg:#05060a;--panel:#0b0d12;--text:#f7f8ff;--muted:#98a0b4;--soft:#cdd2e3;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.05);--violet:#7c7bff;--violet2:#b9a7ff;--green:#34d399;--red:#fb7185;--amber:#fbbf24;--radius:28px;--shadow:0 30px 100px rgba(0,0,0,.55)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% -10%,rgba(124,123,255,.28),transparent 36%),radial-gradient(circle at 92% 12%,rgba(52,211,153,.16),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-feature-settings:"cv01","ss03";overflow-x:hidden}a{color:inherit;text-decoration:none}.noise{position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}.shell{max-width:1180px;margin:0 auto;padding:0 24px}.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:linear-gradient(to bottom,rgba(5,6,10,.86),rgba(5,6,10,.55));border-bottom:1px solid var(--line2)}.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.04em}.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--violet),var(--green));box-shadow:0 0 50px rgba(124,123,255,.55)}.navlinks{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px;font-weight:650}.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);color:var(--text);font-weight:750}.btn.primary{background:linear-gradient(135deg,#6366f1,#8b5cf6);border:0;box-shadow:0 12px 50px rgba(99,102,241,.35)}
+    .hero{padding:92px 0 58px;text-align:center;position:relative}.eyebrow{display:inline-flex;gap:9px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:9px 14px;background:rgba(255,255,255,.04);color:var(--soft);font:700 13px/1 JetBrains Mono,monospace;text-transform:uppercase;letter-spacing:.08em}.hero h1{font-size:clamp(52px,8.5vw,112px);line-height:.88;letter-spacing:-.085em;margin:28px auto 22px;max-width:1050px;font-weight:900}.grad{background:linear-gradient(120deg,#fff,#c9ccff 40%,#93f5d2 78%);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{max-width:790px;margin:0 auto;color:var(--muted);font-size:clamp(19px,2.2vw,25px);line-height:1.45;font-weight:500}.plain{max-width:760px;margin:18px auto 0;color:#d5d9e8;font-size:19px;line-height:1.55}.cta{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:34px}.hero-grid{margin-top:64px;display:grid;grid-template-columns:1fr;gap:18px}.showcase-frame{position:relative;border:1px solid var(--line);border-radius:34px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025));padding:16px;box-shadow:var(--shadow);overflow:hidden}.showcase-frame:before{content:"";position:absolute;inset:-1px;background:radial-gradient(circle at 50% 0,rgba(124,123,255,.26),transparent 45%);pointer-events:none}.showcase-frame img{position:relative;width:100%;display:block;border-radius:22px}.showcase-frame.hero-image{max-width:680px;margin:0 auto;padding:10px;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.035))}.caption{display:flex;justify-content:space-between;gap:20px;color:var(--muted);font:600 13px/1.3 JetBrains Mono,monospace;margin-top:12px;text-transform:uppercase;letter-spacing:.04em}
+    section{padding:82px 0}.section-head{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-bottom:28px}.section-head h2{font-size:clamp(34px,5vw,64px);letter-spacing:-.07em;line-height:.95;margin:0;max-width:740px}.section-head p{max-width:455px;margin:0;color:var(--muted);font-size:18px;line-height:1.5}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.025));padding:24px;min-height:220px;box-shadow:0 18px 60px rgba(0,0,0,.24)}.k{font:700 12px/1 JetBrains Mono,monospace;color:var(--violet2);text-transform:uppercase;letter-spacing:.11em}.card h3{font-size:26px;line-height:1.02;letter-spacing:-.045em;margin:18px 0 10px}.card p{color:var(--muted);font-size:16px;line-height:1.55;margin:0}.metric{font-size:48px;line-height:.95;font-weight:900;letter-spacing:-.07em;margin-top:24px}.green{color:var(--green)}.violet{color:var(--violet2)}.red{color:var(--red)}
+    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{position:relative;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.035);padding:22px}.num{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;background:rgba(124,123,255,.18);color:#d8d6ff;font:800 13px JetBrains Mono,monospace}.step h3{font-size:20px;margin:18px 0 8px;letter-spacing:-.03em}.step p{color:var(--muted);line-height:1.5;margin:0}.concept{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.concept-box{border:1px solid var(--line);border-radius:30px;background:rgba(255,255,255,.045);padding:30px}.concept-box h3{margin:0 0 12px;font-size:30px;letter-spacing:-.05em}.concept-box p,.concept-box li{color:var(--muted);font-size:17px;line-height:1.6}.concept-box ul{margin:10px 0 0;padding-left:20px}.demo{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:center}.demo-screen{border:1px solid var(--line);border-radius:34px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025));padding:14px;box-shadow:0 24px 80px rgba(0,0,0,.32)}.demo-screen img{width:100%;display:block;border-radius:22px}.demo-panel{border:1px solid var(--line);border-radius:30px;background:rgba(255,255,255,.045);padding:28px}.demo-panel h3{font-size:38px;line-height:1;letter-spacing:-.06em;margin:0 0 14px}.demo-panel p{color:var(--muted);font-size:18px;line-height:1.55}.switches{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.chip{border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);color:var(--soft);padding:10px 13px;font-weight:800;cursor:pointer}.chip.active{background:linear-gradient(135deg,#6366f1,#8b5cf6);border-color:transparent;color:#fff}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.shot{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#f5f2e8}.shot img{width:100%;display:block}.shot span{display:block;padding:12px 14px;background:rgba(255,255,255,.04);color:var(--muted);font:700 12px JetBrains Mono,monospace;text-transform:uppercase;letter-spacing:.08em}.quote{border:1px solid var(--line);border-radius:38px;background:linear-gradient(135deg,rgba(124,123,255,.18),rgba(52,211,153,.08));padding:46px;text-align:center}.quote p{font-size:clamp(28px,4.8vw,58px);line-height:.98;letter-spacing:-.065em;font-weight:900;margin:0}.quote small{display:block;color:var(--muted);margin-top:22px;font-size:17px}.footer{padding:54px 0 76px;color:var(--muted);border-top:1px solid var(--line2)}.footer-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.mono{font-family:JetBrains Mono,monospace}
+    @media(max-width:860px){.navlinks a:not(.btn){display:none}.cards,.flow,.gallery,.concept,.demo{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:14px}.hero{padding-top:64px}.caption{display:block}.caption span{display:block;margin-bottom:6px}}
   </style>
 </head>
 <body>
   <div class="noise"></div>
-  <nav class="nav"><div class="shell nav-inner"><a class="brand" href="#"><span class="logo"></span><span>AgentsBoard</span></a><div class="navlinks"><a href="#why">Why</a><a href="#system">System</a><a href="#showcase">Showcase</a><a class="btn" href="https://github.com/wedi-dev/agents-board-demo">GitHub</a></div></div></nav>
+  <nav class="nav"><div class="shell nav-inner"><a class="brand" href="#"><span class="logo"></span><span>AgentsBoard</span></a><div class="navlinks"><a href="#why">Why</a><a href="#concept">Concept</a><a href="#demo">Demo</a><a href="#showcase">Showcase</a><a class="btn" href="https://github.com/wedi-dev/agents-board-demo">GitHub</a></div></div></nav>
   <main>
     <section class="hero shell">
       <div class="eyebrow">agent-native widgets · concept demo</div>
       <h1>Home-screen intelligence <span class="grad">operated by agents.</span></h1>
-      <p class="lead">AgentsBoard is a phone-sized command board where AI agents publish validated, readable widgets: one signal, one interpretation, one next action.</p>
-      <div class="cta"><a class="btn primary" href="#showcase">Explore the showcase</a><a class="btn" href="https://github.com/wedi-dev/agents-board-demo/blob/main/README.md">Read the concept</a></div>
+      <p class="lead">AgentsBoard is for founders, operators, and builders who supervise too many moving parts. Agents turn tasks, ops signals, calendar pressure, and project state into one clear widget: what matters, why it matters, and what to do next.</p>
+      <p class="plain"><strong>Dashboards wait. AgentsBoard acts.</strong> One signal, one interpretation, one next action.</p>
+      <div class="cta"><a class="btn primary" href="#demo">Try the preview</a><a class="btn" href="#concept">Read the concept</a></div>
       <div class="hero-grid">
-        <div class="showcase-frame hero-image"><img src="assets/hero/agentsboard-hero-7751ce57.jpg" alt="AgentsBoard iPhone hero mockup"><div class="caption"><span>agent-native home-screen widgets · product hero</span><span>fresh fingerprinted asset · no manual cache busting</span></div></div>
+        <div class="showcase-frame hero-image"><img src="assets/hero/agentsboard-hero-7751ce57.jpg" alt="AgentsBoard iPhone hero mockup"><div class="caption"><span>agent-native home-screen widgets</span><span>from noisy tools to one calm next action</span></div></div>
       </div>
     </section>
 
     <section id="why" class="shell">
-      <div class="section-head"><h2>Dashboards wait. AgentsBoard acts.</h2><p>Most dashboards assume you will keep checking them. AgentsBoard lets agents decide what deserves attention and compress it into a calm, glanceable surface.</p></div>
+      <div class="section-head"><h2>Most dashboards show data. AgentsBoard shows the next move.</h2><p>It is a small supervision layer for autonomous work: agents inspect your tools, choose the strongest signal, and publish a widget you can understand in two seconds.</p></div>
       <div class="cards">
-        <div class="card"><div class="k">signal</div><h3>Opinionated, not passive.</h3><p>A good widget says what matters: “9 overdue. First: Google Workspace CLI.” Not another raw list.</p><div class="metric red">9</div></div>
-        <div class="card"><div class="k">guardrails</div><h3>Generated UI with constraints.</h3><p>Slots use a small layout primitive, validation rules, font-size checks, TTLs, and provenance metadata.</p><div class="metric violet">S6</div></div>
-        <div class="card"><div class="k">surface</div><h3>Built for supervision.</h3><p>Todoist, ops, calendar, code, finance, home — agents summarize the system, humans steer the next move.</p><div class="metric green">1×</div></div>
+        <div class="card"><div class="k">signal</div><h3>Opinionated, not passive.</h3><p>A good widget does not dump a list. It says: “three calls need a decision” or “invoice first, everything else later.”</p><div class="metric red">Next</div></div>
+        <div class="card"><div class="k">trust</div><h3>Generated UI with guardrails.</h3><p>Agent-authored widgets are checked for readable text, safe placement, valid structure, and ownership before they are shown.</p><div class="metric violet">Safe</div></div>
+        <div class="card"><div class="k">surface</div><h3>Built for daily supervision.</h3><p>Todoist, ops, calendar, code, finance, home — agents compress many systems into a phone-sized command surface.</p><div class="metric green">Calm</div></div>
+      </div>
+    </section>
+
+    <section id="concept" class="shell">
+      <div class="section-head"><h2>What is AgentsBoard?</h2><p>A personal command board where AI agents publish small, trusted widgets instead of long status reports.</p></div>
+      <div class="concept">
+        <div class="concept-box"><h3>For people running complex systems</h3><p>If your work lives across task managers, repos, calendars, chats, servers, and personal routines, AgentsBoard gives agents a place to surface the one thing you should see now.</p><ul><li>one dominant headline</li><li>one short interpretation</li><li>one suggested action or status</li><li>clear source and freshness metadata</li></ul></div>
+        <div class="concept-box"><h3>Why Codex matters</h3><p>Coding agents are not only used to build AgentsBoard. They are part of the product model: generating widget variants, writing validators, testing layout regressions, and turning feedback into working prototypes.</p></div>
       </div>
     </section>
 
     <section id="system" class="shell">
-      <div class="section-head"><h2>The product model is agent-native.</h2><p>Agents do not just write text. They inspect state, choose priority, author a slot, validate it, publish it, and leave an audit trail.</p></div>
+      <div class="section-head"><h2>The product model is agent-native.</h2><p>Agents inspect state, pick priority, author a widget, validate it, publish it, and leave an audit trail.</p></div>
       <div class="flow">
         <div class="step"><div class="num">01</div><h3>Inspect</h3><p>Read Todoist, GitHub, calendar, ops, or any connected source.</p></div>
         <div class="step"><div class="num">02</div><h3>Decide</h3><p>Pick the one signal that deserves a home-screen slot now.</p></div>
-        <div class="step"><div class="num">03</div><h3>Validate</h3><p>Check layout shape, safe areas, tiny fonts, forbidden HTML, TTL, provenance.</p></div>
+        <div class="step"><div class="num">03</div><h3>Validate</h3><p>Check structure, readable typography, safe areas, freshness, and ownership.</p></div>
         <div class="step"><div class="num">04</div><h3>Publish</h3><p>Render a widget that a human can understand in two seconds.</p></div>
       </div>
     </section>
 
-    <section id="showcase" class="shell">
-      <div class="section-head"><h2>Fifteen generated slot directions.</h2><p>These are not static mockups. They were generated into the running widget server, validated, rendered, and captured as previews.</p></div>
-      <div class="gallery">
-        <div class="shot"><img src="assets/showcase-en-v2/slot-04.png?v=2" alt="Decision Inbox widget"><span>Decision inbox</span></div>
-        <div class="shot"><img src="assets/showcase-en-v2/slot-05.png?v=2" alt="Ops Pulse widget"><span>Ops pulse</span></div>
-        <div class="shot"><img src="assets/showcase-en-v2/slot-06.png?v=2" alt="Cash Focus widget"><span>Cash focus</span></div>
-        <div class="shot"><img src="assets/showcase-en-v2/slot-08.png?v=2" alt="Meeting Brief widget"><span>Meeting brief</span></div>
-        <div class="shot"><img src="assets/showcase-en-v2/slot-11.png?v=2" alt="Pipeline widget"><span>Pipeline</span></div>
-        <div class="shot"><img src="assets/showcase-en-v2/slot-16.png?v=2" alt="Launch Gate widget"><span>Launch gate</span></div>
+    <section id="demo" class="shell">
+      <div class="section-head"><h2>Interactive preview.</h2><p>This static public demo uses screenshots rendered by the running widget server. Switch between examples to see the product grammar.</p></div>
+      <div class="demo">
+        <div class="demo-screen"><img id="demo-img" src="assets/showcase-en-v2/slot-04.png?v=2" alt="Decision Queue widget"></div>
+        <div class="demo-panel"><div class="k" id="demo-k">Decision Queue</div><h3 id="demo-title">Three calls need a decision.</h3><p id="demo-copy">AgentsBoard turns a noisy meeting backlog into one supervision prompt: approve, delegate, or cut.</p><div class="switches" id="switches"></div></div>
       </div>
     </section>
 
-    <section class="shell">
-      <div class="quote"><p>AgentsBoard is a supervision layer for autonomous work: small enough for the home screen, structured enough for trust.</p><small>Public concept demo now. OSS core planned next.</small></div>
+    <section id="showcase" class="shell">
+      <div class="section-head"><h2>A selection from fifteen generated directions.</h2><p>The full set explores decision queues, ops pulse, cash focus, deep work, meeting briefs, habits, learning, pipeline, risk, energy, travel, home ops, launch readiness, code health, and story framing.</p></div>
+      <div class="gallery">
+        <div class="shot"><img src="assets/showcase-en-v2/slot-04.png?v=2" alt="Decision Queue widget"><span>Decision Queue</span></div>
+        <div class="shot"><img src="assets/showcase-en-v2/slot-05.png?v=2" alt="Ops Pulse widget"><span>Ops Pulse</span></div>
+        <div class="shot"><img src="assets/showcase-en-v2/slot-06.png?v=2" alt="Cash Focus widget"><span>Cash Focus</span></div>
+        <div class="shot"><img src="assets/showcase-en-v2/slot-07.png?v=2" alt="Deep Work widget"><span>Deep Work</span></div>
+        <div class="shot"><img src="assets/showcase-en-v2/slot-08.png?v=2" alt="Meeting Brief widget"><span>Meeting Brief</span></div>
+        <div class="shot"><img src="assets/showcase-en-v2/slot-09.png?v=2" alt="Habit Stack widget"><span>Habit Stack</span></div>
+        <div class="shot"><img src="assets/showcase-en-v2/slot-10.png?v=2" alt="Learning Card widget"><span>Learning Card</span></div>
+        <div class="shot"><img src="assets/showcase-en-v2/slot-11.png?v=2" alt="Pipeline widget"><span>Pipeline</span></div>
+        <div class="shot"><img src="assets/showcase-en-v2/slot-12.png?v=2" alt="Risk Radar widget"><span>Risk Radar</span></div>
+        <div class="shot"><img src="assets/showcase-en-v2/slot-13.png?v=2" alt="Energy widget"><span>Energy</span></div>
+        <div class="shot"><img src="assets/showcase-en-v2/slot-14.png?v=2" alt="Travel Pack widget"><span>Travel Pack</span></div>
+        <div class="shot"><img src="assets/showcase-en-v2/slot-15.png?v=2" alt="Home Ops widget"><span>Home Ops</span></div>
+        <div class="shot"><img src="assets/showcase-en-v2/slot-16.png?v=2" alt="Launch Gate widget"><span>Launch Gate</span></div>
+        <div class="shot"><img src="assets/showcase-en-v2/slot-17.png?v=2" alt="Code Health widget"><span>Code Health</span></div>
+        <div class="shot"><img src="assets/showcase-en-v2/slot-18.png?v=2" alt="Investor Lens widget"><span>Investor Lens</span></div>
+      </div>
     </section>
+
+    <section class="shell"><div class="quote"><p>One signal, one interpretation, one next action.</p><small>A calm supervision layer for autonomous work. Public concept demo now; OSS core planned next.</small></div></section>
   </main>
   <footer class="footer"><div class="shell footer-inner"><div><strong>AgentsBoard</strong><br><span>agent-native home-screen intelligence</span></div><div class="mono">wedi-dev / concept demo</div></div></footer>
+  <script>
+    const demos=[
+      ['Decision Queue','Three calls need a decision.','AgentsBoard turns a noisy meeting backlog into one supervision prompt: approve, delegate, or cut.','assets/showcase-en-v2/slot-04.png?v=2','Decision Queue widget'],
+      ['Ops Pulse','The system is calm.','Operational signals are summarized into a simple state: online, clean, keep shipping.','assets/showcase-en-v2/slot-05.png?v=2','Ops Pulse widget'],
+      ['Cash Focus','Close revenue first.','The agent can turn scattered finance reminders into the one move that matters today.','assets/showcase-en-v2/slot-06.png?v=2','Cash Focus widget'],
+      ['Launch Gate','Seven of ten checks are done.','Pre-release work becomes a clear gate instead of an invisible checklist.','assets/showcase-en-v2/slot-16.png?v=2','Launch Gate widget']
+    ];
+    const img=document.getElementById('demo-img'), k=document.getElementById('demo-k'), title=document.getElementById('demo-title'), copy=document.getElementById('demo-copy'), switches=document.getElementById('switches');
+    demos.forEach((d,i)=>{const b=document.createElement('button');b.className='chip'+(i===0?' active':'');b.textContent=d[0];b.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');k.textContent=d[0];title.textContent=d[1];copy.textContent=d[2];img.src=d[3];img.alt=d[4];};switches.appendChild(b);});
+  </script>
 </body>
 </html>
