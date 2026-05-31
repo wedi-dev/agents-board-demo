@@ -22,7 +22,7 @@
 </head>
 <body>
   <div class="noise"></div>
-  <nav class="nav"><div class="shell nav-inner"><a class="brand" href="speakpaste.html"><span class="logo"></span><span>SpeakPaste</span></a><div class="navlinks"><a href="index.html">AgentsBoard</a><a href="#why">Why</a><a href="#architecture">Architecture</a><a href="#form">Form copy</a><a class="btn" href="https://github.com/wedi-dev/agents-board-demo">GitHub</a></div></div></nav>
+  <nav class="nav"><div class="shell nav-inner"><a class="brand" href="speakpaste.html"><span class="logo"></span><span>SpeakPaste</span></a><div class="navlinks"><a href="index.html">AgentsBoard</a><a href="#why">Why</a><a href="#architecture">Architecture</a><a href="#codex">Codex fit</a><a class="btn" href="https://github.com/wedi-dev/agents-board-demo">GitHub</a></div></div></nav>
   <main>
     <section class="hero shell">
       <div class="hero-grid">
@@ -30,7 +30,7 @@
           <div class="eyebrow">ios/ipados · speech-first input · oss pitch</div>
           <h1>The keyboard <span class="grad">without a keyboard.</span></h1>
           <p class="lead">SpeakPaste turns any text field into an AI command surface: dictate, clean up, rewrite, voice-edit, paste snippets, and run text combos without relying on a full QWERTY keyboard.</p>
-          <div class="cta"><a class="btn primary" href="#form">Use the form answers</a><a class="btn" href="#architecture">See the hard part</a></div>
+          <div class="cta"><a class="btn primary" href="#architecture">See the architecture</a><a class="btn" href="#why">Why it matters</a></div>
           <div class="proof"><div><strong>iOS</strong><span>custom keyboard constraints</span></div><div><strong>Voice</strong><span>speech-first writing flow</span></div><div><strong>OSS</strong><span>reference implementation</span></div></div>
         </div>
         <div class="phone-card"><img src="assets/speakpaste/speakpaste-keyboard-form-7520258f.jpg" alt="SpeakPaste keyboard visible while filling the OpenAI Codex for OSS form"><div class="caption"><span>real iPhone form flow</span><span>voice keyboard inserts into any app</span></div></div>
@@ -56,7 +56,7 @@
       </div>
     </section>
 
-    <section class="shell">
+    <section id="codex" class="shell">
       <div class="section-head"><h2>Why Codex fits.</h2><p>SpeakPaste is small enough to understand, but complex enough to benefit from serious maintainer automation.</p></div>
       <div class="cards">
         <div class="card"><div class="k">maintenance</div><h3>Refactor fragile flows safely.</h3><ul><li>keyboard state machine</li><li>extension/app IPC</li><li>fallback behavior</li><li>release workflows</li></ul></div>
@@ -65,17 +65,8 @@
       </div>
     </section>
 
-    <section id="form" class="shell">
-      <div class="section-head"><h2>Short form answers.</h2><p>Concise copy for the Codex for Open Source application.</p></div>
-      <div class="answers">
-        <div class="answer"><h3>Why does this repository qualify? <span>333 chars</span></h3><p>SpeakPaste is an open-source iOS/iPadOS reference implementation for an AI-first “keyboard without a keyboard”: speech input, LLM cleanup, voice editing, snippets, combos, and resilient extension/app IPC. It addresses a poorly documented ecosystem gap: building production-grade AI workflows inside Apple custom keyboard constraints.</p></div>
-        <div class="answer"><h3>How will you use API credits? <span>303 chars</span></h3><p>I will use API credits to add OpenAI provider support, run prompt regression tests, generate speech/LLM edge-case fixtures, and improve maintainer automation: Codex-assisted PR review, refactoring, documentation, security checks, and release workflows around the fragile keyboard-extension architecture.</p></div>
-        <div class="answer"><h3>Anything else we should know? <span>384 chars</span></h3><p>I am a managing partner at websensa.com and use coding agents in real work, especially Claude Code. I bought Codex for travel and want to evaluate it seriously for OSS maintenance. SpeakPaste is practical mobile AI infrastructure: a minimal command keyboard, not another chat UI. The hardest work is reliability, privacy, extension IPC, fallback behavior, and maintainable docs/tests.</p></div>
-      </div>
-    </section>
-
     <section class="shell"><div class="quote"><p>SpeakPaste is a practical experiment in replacing the mobile keyboard with an AI command surface.</p><small>Real iOS extension constraints. Real speech/LLM workflows. Real OSS maintainer work.</small></div></section>
   </main>
-  <footer class="footer"><div class="shell footer-inner"><div><strong>SpeakPaste</strong><br><span>speech-first AI input for iOS/iPadOS</span></div><div class="mono">wedi-dev / Codex OSS pitch</div></div></footer>
+  <footer class="footer"><div class="shell footer-inner"><div><strong>SpeakPaste</strong><br><span>speech-first AI input for iOS/iPadOS</span></div><div class="mono">wedi-dev / mobile AI infrastructure</div></div></footer>
 </body>
 </html>
